@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dispatch
+spec:
+  selector:
+    app: dispatch
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dispatch
+  labels:
+    app: dispatch
+spec:
+  containers:
+    - name: dispatch
+      image: docker.io/krn010/dispatch
